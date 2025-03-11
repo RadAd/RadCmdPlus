@@ -71,7 +71,7 @@ set /a C=C+1
 goto :eof
 
 :add_link
-call :_add $E]8;;%1$E\%2$E]8;;$E\
+call :_add $E]8;;%1$E\%~2$E]8;;$E\
 goto :eof
 
 :nl
@@ -84,11 +84,11 @@ call :_add %CALENDAR_ICON%$D$S%TIME_ICON%$T$H$H$H$H$H$H$S
 goto :eof
 
 :path
-call :add_link file://$P %FOLDER_ICON%$P
+call :add_link file://$P "%FOLDER_ICON%$P"
 goto :eof
 
 :homepath
-call :add_link file://$P %FOLDER_ICON%!CD:%HOME%=~!
+call :add_link file://$P "%FOLDER_ICON%!CD:%HOME%=~!"
 goto :eof
 
 :remote
