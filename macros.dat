@@ -1,2 +1,2 @@
-cd=RadChDir $*
-chdir=RadChDir $*
+cd=%RADCMDPLUS_CHDIR% $*
+chdir=%RADCMDPLUS_CHDIR% $*
