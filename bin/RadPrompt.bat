@@ -95,6 +95,10 @@ goto :eof
 if defined REMOTE_UNC (call :_add %REMOTE_ICON%$M) else (set /a C=C+1)
 goto :eof
 
+:ssh
+if defined SSHWINUSERDOMAIN (call :_add %REMOTE_ICON%%SSHWINUSERDOMAIN%$S) else (set /a C=C+1)
+goto :eof
+
 :branch
 if defined GIT_BRANCH (call :_add %BRANCH_ICON%%GIT_BRANCH%) else (set /a C=C+1)
 goto :eof
