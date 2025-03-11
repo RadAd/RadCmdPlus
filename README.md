@@ -10,3 +10,7 @@ Enhancement over standard `chdir`:
 
 ### Post Change Directory
 All batch files in "%LOCALAPPDATA%\RadCmdPlus\PostCd" will be executed after current directory is changed.
+
+## RadPrompt
+Enhancement for the prompt.
+A simple way to create a nice looking prompt.
