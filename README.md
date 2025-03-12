@@ -13,8 +13,10 @@ All batch files in "%LOCALAPPDATA%\RadCmdPlus\PostCd" will be executed after cur
 
 ## RadPrompt
 Enhancement for the prompt.
+
 A simple way to create a nice looking prompt.
 
 ## RadPrintPath
-Print out path line by line
+Print out path line by line.
+
 Highlights duplicate entries and non-existant directories.
