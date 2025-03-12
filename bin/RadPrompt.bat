@@ -2,6 +2,7 @@
 setlocal ENABLEDELAYEDEXPANSION
 
 if "%~1" == "" (goto :_usage || goto :eof)
+if "%~1" == "/?" (goto :_usage || goto :eof)
 
 set ESC=$E
 set SPC=$S
