@@ -1,17 +1,17 @@
 # RadCmdPlus
-Enhancements for cmd setup and use
+Enhancements for cmd setup and use.
 
 ## RadChDir
 Enhancement over standard `chdir`:
 - Will always drive when necessary
-- "-" will change to last directory
+- `-` will change to last directory
 - Network drives will use pushd instead
-- "~" will expand to the home directory
+- `~` will expand to the home directory
 
-### alias: cd, chdir
+**alias:** cd, chdir
 
 ### Post Change Directory
-All batch files in "%LOCALAPPDATA%\RadCmdPlus\PostCd" will be executed after current directory is changed.
+All batch files in `%LOCALAPPDATA%\RadCmdPlus\PostCd` will be executed after current directory is changed.
 
 ## RadPrompt
 Enhancement for the prompt.
@@ -23,11 +23,11 @@ Print out path line by line.
 
 Highlights duplicate entries and non-existant directories.
 
-### alias: path
+**alias:** path
 
 ## RadDirBookmark
-Directory bookmarks
+Directory bookmarks.
 
 Save directory bookmarks to quickly change to later.
 
-### alias: bm
+**alias:** bm
