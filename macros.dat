@@ -1,3 +1,4 @@
 cd=%RADCMDPLUS_CHDIR% $*
 chdir=%RADCMDPLUS_CHDIR% $*
 path=RadPrintPath.bat $*
+bm=RadDirBookmark.bat $*

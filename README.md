@@ -8,6 +8,8 @@ Enhancement over standard `chdir`:
 - Network drives will use pushd instead
 - "~" will expand to the home directory
 
+### alias: cd, chdir
+
 ### Post Change Directory
 All batch files in "%LOCALAPPDATA%\RadCmdPlus\PostCd" will be executed after current directory is changed.
 
@@ -20,3 +22,12 @@ A simple way to create a nice looking prompt.
 Print out path line by line.
 
 Highlights duplicate entries and non-existant directories.
+
+### alias: path
+
+## RadDirBookmark
+Directory bookmarks
+
+Save directory bookmarks to quickly change to later.
+
+### alias: bm
