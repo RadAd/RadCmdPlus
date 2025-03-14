@@ -8,13 +8,13 @@ set command=%~1
 if not defined RADCMDPLUS_CHDIR set RADCMDPLUS_CHDIR=cd /d
 
 if not defined command (where fzf > NUL 2>&1 && goto :search || goto :list)
-if "%command%" == "/a" shift & goto :add
-if "%command%" == "/d" shift & goto :delete
-if "%command%" == "/c" shift & goto :cd
-if "%command%" == "/s" shift & goto :search
-if "%command%" == "/l" shift & goto :list
+if "%command%" == "add" shift & goto :add
+if "%command%" == "delete" shift & goto :delete
+if "%command%" == "go" shift & goto :cd
+if "%command%" == "search" shift & goto :search
+if "%command%" == "list" shift & goto :list
 if "%command%" == "/?" goto :usage
-if "%command%" == "/-" echo %file% & goto :eof
+if "%command%" == "file" echo %file% & goto :eof
 (where fzf > NUL 2>&1 && goto :cd || goto :searchpre)
 
 :add
@@ -62,11 +62,11 @@ goto :eof
 :usage
 echo.%0 - Directory bookmarks
 echo.
-echo.%0 /a ^<dir^>    To add directory
-echo.%0 /d ^<dir^>    To delete directory
-echo.%0 /c ^<num^>    To change directory
-echo.%0 ^<num^>       To change directory
-echo.%0 /l          To list bookmarks
-echo.%0 /s          To search bookmarks using fzf and change directory
-echo.%0 ^<search^>    To search bookmarks using fzf with initial search term and change directory
+echo.%0 add ^<dir^>     To add directory
+echo.%0 delete ^<dir^>  To delete directory
+echo.%0 go ^<num^>      To change directory
+echo.%0 ^<num^>         To change directory
+echo.%0 list          To list bookmarks
+echo.%0 search        To search bookmarks using fzf and change directory
+echo.%0 ^<search^>      To search bookmarks using fzf with initial search term and change directory
 goto :eof
