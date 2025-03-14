@@ -31,3 +31,10 @@ Directory bookmarks.
 Save directory bookmarks to quickly change to later.
 
 **alias:** bm
+
+## RadDirHistory
+Directory history.
+
+Save directory cahnges in history to quickly change to later.
+
+**alias:** scd
