@@ -19,32 +19,42 @@ goto :eof
 if not "%~1" == "" (echo Too many parameters && exit /b 1)
 set CD_FIND=%CD%
 set CD_FIND=%CD_FIND:\=\\%
-findstr /X /I /V /C:"%CD_FIND%" "%file%" > "%file%.new"
-del "%file%"
-ren "%file%.new" %name%
+if exist "%file%" (
+  findstr /X /I /V /C:"%CD_FIND%" "%file%" > "%file%.new"
+  del "%file%"
+  ren "%file%.new" %name%
+)
 echo.%CD%>> "%file%"
 goto :eof
 
 :search
 if not "%~1" == "" (echo Too many parameters && exit /b 1)
 where fzf > NUL 2>&1 || (echo Cannot find fzf && exit /b 1)
+if not exist "%file%" (echo No directory history && exit /b 1)
 endlocal & for /f %%f in ('type "%file%" ^| fzf --tac --height=~10 --exact --scheme=history') do @%RADCMDPLUS_CHDIR% %%f
 goto :eof
 
 :searchpre
 where fzf > NUL 2>&1 || (echo Cannot find fzf && exit /b 1)
+if not exist "%file%" (echo No directory history && exit /b 1)
 endlocal & for /f %%f in ('type "%file%" ^| fzf --tac --height=~10 --exact --scheme=history --query="%*" --select-1') do @%RADCMDPLUS_CHDIR% %%f
 goto :eof
 
 :list
 if not "%~1" == "" (echo Too many parameters && exit /b 1)
+if not exist "%file%" (echo No directory history && exit /b 1)
 rem tail "%file%"
 for /F "usebackq tokens=3,3 delims= " %%l IN (`find /c /v "" %file%`) DO (call SET find_lc=%%l)
 set /a skiplines=%find_lc% - 10
-more +%skiplines% %file%
+if %skiplines% leq 0 (
+  type %file%
+) else (
+  more +%skiplines% %file%
+)
 goto :eof
 
 :listpre
+if not exist "%file%" (echo No directory history && exit /b 1)
 findstr /I /C:"%1" "%file%"
 goto :eof
 

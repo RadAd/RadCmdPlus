@@ -28,6 +28,7 @@ goto :eof
 :delete
 if "%~1" == "" (echo Missing directory && exit /b 1)
 if not "%~2" == "" (echo Too many parameters && exit /b 1)
+if not exist "%file%" (echo No bookmarks && exit /b 1)
 findstr /X /I /V /C:"%~1" "%file%" > "%file%.new"
 del "%file%"
 ren "%file%.new" %name%
@@ -36,6 +37,7 @@ goto :eof
 :cd
 if "%~1" == "" (echo Missing bookmark number && exit /b 1)
 if not "%~2" == "" (echo Too many parameters && exit /b 1)
+if not exist "%file%" (echo No bookmarks && exit /b 1)
 set LINE=%1
 set dir=
 for /f "usebackq tokens=1,* delims=:" %%i in (`type "%file%" ^| findstr /N /V ? ^| findstr /B /C:"%LINE%:"`) do @set dir=%%j
@@ -45,19 +47,22 @@ goto :eof
 
 :list
 if not "%~1" == "" (echo Too many parameters && exit /b 1)
-rem if exist "%file%" type "%file%"
+if not exist "%file%" (echo No bookmarks && exit /b 1)
+rem type "%file%"
 if exist "%file%" findstr /V /N ? "%file%"
 goto :eof
 
 :search
 if not "%~1" == "" (echo Too many parameters && exit /b 1)
 where fzf > NUL 2>&1 || (echo Cannot find fzf && exit /b 1)
-endlocal & for /f %%f in ('type %file% ^| fzf --height=~10 --exact') do @%RADCMDPLUS_CHDIR% %%f
+if not exist "%file%" (echo No bookmarks && exit /b 1)
+endlocal & for /f %%f in ('type "%file%" ^| fzf --height=~10 --exact') do @%RADCMDPLUS_CHDIR% %%f
 goto :eof
 
 :searchpre
 where fzf > NUL 2>&1 || (echo Cannot find fzf && exit /b 1)
-endlocal & for /f %%f in ('type %file% ^| fzf --height=~10 --exact --query="%*" --select-1') do @%RADCMDPLUS_CHDIR% %%f
+if not exist "%file%" (echo No bookmarks && exit /b 1)
+endlocal & for /f %%f in ('type "%file%" ^| fzf --height=~10 --exact --query="%*" --select-1') do @%RADCMDPLUS_CHDIR% %%f
 goto :eof
 
 :usage
