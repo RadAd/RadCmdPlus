@@ -15,6 +15,10 @@ endlocal && set RADCD_LAST=%CD% && call %CHDIR% %_% && call :postcd
 goto :eof
 
 :postcd
+for %%f in ("%~dp0%..\PostCd\*.bat") do @(
+  rem echo "%%f"
+  call "%%f" || echo Error in "%%f"
+)
 for %%f in ("%LOCALAPPDATA%\RadCmdPlus\PostCd\*.bat") do @(
   rem echo "%%f"
   call "%%f" || echo Error in "%%f"
