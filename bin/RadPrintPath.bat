@@ -11,6 +11,7 @@ goto :eof
 
 :check
 setlocal ENABLEDELAYEDEXPANSION
+if not defined ESC set ESC=
 set NOT_EXIST=%ESC%[31m
 set DUPLICATE=%ESC%[32m
 set RESET=%ESC%[0m
