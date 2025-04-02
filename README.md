@@ -15,6 +15,11 @@ set RADCMDPLUSDIR=%APPDATA%\Radsoft\RadCmdPlus
 call "%RADCMDPLUSDIR%\CmdStartup.bat"
 ```
 
+## RadAlias
+Manage aliases for the command line.
+
+**alias:** alias
+
 ## RadChDir
 Enhancement over standard `chdir`:
 - Will always drive when necessary

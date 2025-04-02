@@ -3,3 +3,4 @@ chdir=%RADCMDPLUS_CHDIR% $*
 path=RadPrintPath.bat $*
 bm=RadDirBookmark.bat $*
 scd=RadDirHistory.bat $*
+alias=RadAlias.bat $*
