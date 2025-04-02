@@ -12,7 +12,7 @@ git clone https://github.com/RadAd/RadCmdPlus.git "%RADCMDPLUSDIR%"
 Add the following lines to your cmd startup script:
 ```
 set RADCMDPLUSDIR=%APPDATA%\Radsoft\RadCmdPlus
-call "%RADCMDPLUSDIR%\StartupCmd.bat"
+call "%RADCMDPLUSDIR%\CmdStartup.bat"
 ```
 
 ## RadChDir

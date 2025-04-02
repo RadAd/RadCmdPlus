@@ -5,6 +5,7 @@ if "%~1" == "/?" goto :_usage
 where sed.exe > NUL 2>&1 || (echo Unable to find sed.exe& exit /b)
 
 setlocal ENABLEDELAYEDEXPANSION
+if not defined ESC set ESC=
 set NOT_EXIST=%ESC%[31m
 set DUPLICATE=%ESC%[32m
 set RESET=%ESC%[0m
