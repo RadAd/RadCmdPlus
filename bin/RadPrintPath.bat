@@ -9,7 +9,7 @@ if not defined ESC set ESC=
 set NOT_EXIST=%ESC%[31m
 set DUPLICATE=%ESC%[32m
 set RESET=%ESC%[0m
-for /F "delims=" %%i in ('echo."%PATH%" ^| sed.exe "s/;/""\n""/g"') do @call :process %%i
+for /F "delims=" %%i in ('echo."%PATH:)=^)%" ^| sed.exe "s/;/""\n""/g"') do @call :process %%i
 endlocal
 goto :eof
 
@@ -22,11 +22,10 @@ set _=%_:(=_%
 set _=%_:)=_%
 
 set DIR=%~1
-set DIR=%DIR:)=^^)%
 
 if defined %_% (
     echo.%DUPLICATE%%DIR% [Duplicate]%RESET%
-) else if exist %1 (
+) else if exist "%DIR:^=%" (
     echo.%DIR%
 ) else (
     echo.%NOT_EXIST%%DIR% [Not Exist]%RESET%
