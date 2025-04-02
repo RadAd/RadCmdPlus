@@ -49,6 +49,11 @@ Save directory bookmarks to quickly change to later.
 ## RadDirHistory
 Directory history.
 
-Save directory cahnges in history to quickly change to later.
+Save directory changes in history to quickly change to later.
 
 **alias:** scd
+
+## RadShim
+Shim management.
+
+Use shims instead of extending the path.

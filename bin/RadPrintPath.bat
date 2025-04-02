@@ -1,20 +1,15 @@
 @echo off
 
-if "%~1" == "/?" (goto :_usage || goto :eof)
+if "%~1" == "/?" goto :_usage
 
 where sed.exe > NUL 2>&1 || (echo Unable to find sed.exe& exit /b)
 
-if "%~1"=="/check" (goto :check || goto :eof)
-
-echo.%PATH%| sed.exe "s/;/\n/g"|%0 /check
-goto :eof
-
-:check
 setlocal ENABLEDELAYEDEXPANSION
 set NOT_EXIST=%ESC%[31m
 set DUPLICATE=%ESC%[32m
 set RESET=%ESC%[0m
-for /f "delims=" %%i in ('more') do @call :process "%%i"
+for /F "delims=" %%i in ('echo."%PATH%" ^| sed.exe "s/;/""\n""/g"') do @call :process %%i
+endlocal
 goto :eof
 
 :process
