@@ -9,7 +9,7 @@ if not defined ESC set ESC=
 set NOT_EXIST=%ESC%[31m
 set DUPLICATE=%ESC%[32m
 set RESET=%ESC%[0m
-for /F "delims=" %%i in ('echo."%PATH:)=^)%" ^| sed.exe "s/;/""\n""/g"') do @call :process %%i
+for /F "delims=" %%i in ('echo."%PATH:)=^)%" ^| sed.exe "s/;/""\n""/g"') do @if not %%i == "" call :process %%i
 endlocal
 goto :eof
 
