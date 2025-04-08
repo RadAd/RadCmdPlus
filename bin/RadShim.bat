@@ -12,7 +12,7 @@ goto :eof
 if "%~1" == "" (echo Missing target >&2 & exit /b 1)
 if not "%~2" == "" (echo Too many parameters >&2 & exit /b 1)
 
-if not exist %1 (echo Cannot find target >&2 & exit /b 1)
+if not exist %1 (echo Cannot find target %1 >&2 & exit /b 1)
 if not exist %LOCALAPPDATA%\RadCmdPlus\Shims md %LOCALAPPDATA%\RadCmdPlus\Shims
 echo.Shim: %1
 echo.@rem Prog=%1> "%LOCALAPPDATA%\RadCmdPlus\Shims\%~n1.bat"
