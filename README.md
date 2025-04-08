@@ -29,21 +29,6 @@ Enhancement over standard `chdir`:
 
 **alias:** cd, chdir
 
-### Post Change Directory
-All batch files in `%LOCALAPPDATA%\RadCmdPlus\PostCd` will be executed after current directory is changed.
-
-## RadPrompt
-Enhancement for the prompt.
-
-A simple way to create a nice looking prompt.
-
-## RadPrintPath
-Print out path line by line.
-
-Highlights duplicate entries and non-existant directories.
-
-**alias:** path
-
 ## RadDirBookmark
 Directory bookmarks.
 
@@ -57,6 +42,21 @@ Directory history.
 Save directory changes in history to quickly change to later.
 
 **alias:** scd
+
+## RadPostCd
+All batch files in `%LOCALAPPDATA%\RadCmdPlus\PostCd` will be executed after current directory is changed.
+
+## RadPrintPath
+Print out path line by line.
+
+Highlights duplicate entries and non-existant directories.
+
+**alias:** path
+
+## RadPrompt
+Enhancement for the prompt.
+
+A simple way to create a nice looking prompt.
 
 ## RadShim
 Shim management.

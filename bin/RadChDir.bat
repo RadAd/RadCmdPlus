@@ -11,22 +11,11 @@ if "%_%"=="-" set _=%RADCD_LAST%
 if "%_:~0,1%"=="~" set _=%HOME%%_:~1%
 if "%_:~0,2%"=="\\" set CHDIR=pushd
 
-endlocal && set RADCD_LAST=%CD% && call %CHDIR% %_% && call :postcd
-goto :eof
-
-:postcd
-for %%f in ("%~dp0%..\PostCd\*.bat") do @(
-  rem echo "%%f"
-  call "%%f" || echo Error in "%%f"
-)
-for %%f in ("%LOCALAPPDATA%\RadCmdPlus\PostCd\*.bat") do @(
-  rem echo "%%f"
-  call "%%f" || echo Error in "%%f"
-)
+endlocal && set RADCD_LAST=%CD% && call %CHDIR% %_% && call RadPostCd.bat
 goto :eof
 
 :usage
-echo.RadChDir ^<cd^> - Change current directory
+echo.%~n0 ^<cd^> - Change current directory
 echo.
 echo.  Will always change drive when necessary
 echo.  "-" will change to last directory
