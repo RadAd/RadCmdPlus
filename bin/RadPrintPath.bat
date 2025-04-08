@@ -2,7 +2,7 @@
 
 if "%~1" == "/?" goto :_usage
 
-where sed.exe > NUL 2>&1 || (echo Unable to find sed.exe& exit /b)
+where sed.exe > NUL 2>&1 || (echo Unable to find sed.exe >&2 & exit /b)
 
 setlocal ENABLEDELAYEDEXPANSION
 if not defined ESC set ESC=

@@ -18,50 +18,50 @@ if "%command%" == "file" echo %file% & goto :eof
 goto :eof
 
 :add
-if "%~1" == "" (echo Missing directory && exit /b 1)
-if not "%~2" == "" (echo Too many parameters && exit /b 1)
+if "%~1" == "" (echo Missing directory >&2 & exit /b 1)
+if not "%~2" == "" (echo Too many parameters >&2 & exit /b 1)
 setlocal
 cd /d %1 && echo.!CD!>> "%file%"
 endlocal
 goto :eof
 
 :delete
-if "%~1" == "" (echo Missing directory && exit /b 1)
-if not "%~2" == "" (echo Too many parameters && exit /b 1)
-if not exist "%file%" (echo No bookmarks && exit /b 1)
+if "%~1" == "" (echo Missing directory >&2 & exit /b 1)
+if not "%~2" == "" (echo Too many parameters >&2 & exit /b 1)
+if not exist "%file%" (echo No bookmarks >&2 & exit /b 1)
 findstr /X /I /V /C:"%~1" "%file%" > "%file%.new"
 del "%file%"
 ren "%file%.new" %name%
 goto :eof
 
 :cd
-if "%~1" == "" (echo Missing bookmark number && exit /b 1)
-if not "%~2" == "" (echo Too many parameters && exit /b 1)
-if not exist "%file%" (echo No bookmarks && exit /b 1)
+if "%~1" == "" (echo Missing bookmark number >&2 & exit /b 1)
+if not "%~2" == "" (echo Too many parameters >&2 & exit /b 1)
+if not exist "%file%" (echo No bookmarks >&2 & exit /b 1)
 set LINE=%1
 set dir=
 for /f "usebackq tokens=1,* delims=:" %%i in (`type "%file%" ^| findstr /N /V ? ^| findstr /B /C:"%LINE%:"`) do @set dir=%%j
-if not defined dir (echo Bookmark not found && exit /b 1)
+if not defined dir (echo Bookmark not found >&2 & exit /b 1)
 endlocal & %RADCMDPLUS_CHDIR% "%dir%"
 goto :eof
 
 :list
-if not "%~1" == "" (echo Too many parameters && exit /b 1)
-if not exist "%file%" (echo No bookmarks && exit /b 1)
+if not "%~1" == "" (echo Too many parameters >&2 & exit /b 1)
+if not exist "%file%" (echo No bookmarks >&2 & exit /b 1)
 rem type "%file%"
 if exist "%file%" findstr /V /N ? "%file%"
 goto :eof
 
 :search
-if not "%~1" == "" (echo Too many parameters && exit /b 1)
-where fzf > NUL 2>&1 || (echo Cannot find fzf && exit /b 1)
-if not exist "%file%" (echo No bookmarks && exit /b 1)
+if not "%~1" == "" (echo Too many parameters >&2 & exit /b 1)
+where fzf > NUL 2>&1 || (echo Cannot find fzf >&2 & exit /b 1)
+if not exist "%file%" (echo No bookmarks >&2 & exit /b 1)
 endlocal & for /f %%f in ('type "%file%" ^| fzf --height=~10 --exact') do @%RADCMDPLUS_CHDIR% %%f
 goto :eof
 
 :searchpre
-where fzf > NUL 2>&1 || (echo Cannot find fzf && exit /b 1)
-if not exist "%file%" (echo No bookmarks && exit /b 1)
+where fzf > NUL 2>&1 || (echo Cannot find fzf >&2 & exit /b 1)
+if not exist "%file%" (echo No bookmarks >&2 & exit /b 1)
 endlocal & for /f %%f in ('type "%file%" ^| fzf --height=~10 --exact --query="%*" --select-1') do @%RADCMDPLUS_CHDIR% %%f
 goto :eof
 
