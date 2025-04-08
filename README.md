@@ -22,7 +22,7 @@ Manage aliases for the command line.
 
 ## RadChDir
 Enhancement over standard `chdir`:
-- Will always drive when necessary
+- Will always change drive when necessary
 - `-` will change to last directory
 - Network drives will use pushd instead
 - `~` will expand to the home directory
