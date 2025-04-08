@@ -3,15 +3,15 @@ Enhancements for cmd setup and use.
 
 ## Install
 
-To install, clone the repository to `%APPDATA%\Radsoft\RadCmdPlus`
+To install, clone the repository:
 ```
-set RADCMDPLUSDIR=%APPDATA%\Radsoft\RadCmdPlus
+set RADCMDPLUSDIR=%LOCALAPPDATA%\Programs\RadSoft\RadCmdPlus
 git clone https://github.com/RadAd/RadCmdPlus.git "%RADCMDPLUSDIR%"
 ```
 
 Add the following lines to your cmd startup script:
 ```
-set RADCMDPLUSDIR=%APPDATA%\Radsoft\RadCmdPlus
+set RADCMDPLUSDIR=%LOCALAPPDATA%\Programs\RadSoft\RadCmdPlus
 call "%RADCMDPLUSDIR%\CmdStartup.bat"
 ```
 
