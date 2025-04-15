@@ -46,12 +46,17 @@ Save directory changes in history to quickly change to later.
 ## RadPostCd
 All batch files in `%LOCALAPPDATA%\RadCmdPlus\PostCd` will be executed after current directory is changed.
 
+## RadPath
+Manage the path.
+
+Add, remove or list the directories in the path.
+
+**alias:** path
+
 ## RadPrintPath
 Print out path line by line.
 
 Highlights duplicate entries and non-existant directories.
-
-**alias:** path
 
 ## RadPrompt
 Enhancement for the prompt.
