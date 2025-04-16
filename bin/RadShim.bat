@@ -14,9 +14,9 @@ goto :eof
 if "%~1" == "" (echo Missing target >&2 & exit /b 1)
 if not "%~2" == "" (echo Too many parameters >&2 & exit /b 1)
 
-if not exist %1 (echo Cannot find target: %1 >&2 & exit /b 1)
+if not exist %1 (echo Cannot find target: %ANSI_RED%%1%ANSI_RESET% >&2 & exit /b 1)
 if not exist %RAD_SHIM_DIR% md %RAD_SHIM_DIR%
-echo.Shim: %1
+echo.Shim: %ANSI_BLUE%%1%ANSI_RESET%
 echo.@rem Prog=%1> "%RAD_SHIM_DIR%\%~n1.bat"
 echo.@%1 %%*>> "%RAD_SHIM_DIR%\%~n1.bat"
 echo.@rem Prog=%1> "%RAD_SHIM_DIR%\%~nx1.bat"
