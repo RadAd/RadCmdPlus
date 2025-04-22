@@ -19,8 +19,10 @@ if not exist %RAD_SHIM_DIR% md %RAD_SHIM_DIR%
 echo.Shim: %ANSI_BLUE%%1%ANSI_RESET%
 echo.@rem Prog=%1> "%RAD_SHIM_DIR%\%~n1.bat"
 echo.@%1 %%*>> "%RAD_SHIM_DIR%\%~n1.bat"
-echo.@rem Prog=%1> "%RAD_SHIM_DIR%\%~nx1.bat"
-echo.@%1 %%*>> "%RAD_SHIM_DIR%\%~nx1.bat"
+if /I not "%~x1" == ".bat" (
+    echo.@rem Prog=%1> "%RAD_SHIM_DIR%\%~nx1.bat"
+    echo.@%1 %%*>> "%RAD_SHIM_DIR%\%~nx1.bat"
+)
 goto :eof
 
 :check
