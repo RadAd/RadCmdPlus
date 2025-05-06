@@ -30,7 +30,7 @@ set _=!_:%~1;=!
 set _=!_:;%~1=!
 if not "%_%" == "%PATH%" (echo Path already added: %1 >&2 & exit /b 1)
 endlocal
-path %1;%PATH%
+path %~1;%PATH%
 goto :eof
 
 :remove
