@@ -25,14 +25,18 @@ goto :eof
 rem echo Adding %1
 rem echo on
 if not exist %1 (echo Directory doesn't exist: %1 >&2 & exit /b 1)
-set _=!PATH:%~1;=!
+set _=%PATH%
+set _=!_:%~1;=!
+set _=!_:;%~1=!
 if not "%_%" == "%PATH%" (echo Path already added: %1 >&2 & exit /b 1)
 endlocal
 path %1;%PATH%
 goto :eof
 
 :remove
-set _=!PATH:%~1;=!
+set _=%PATH%
+set _=!_:%~1;=!
+set _=!_:;%~1=!
 if "%_%" == "%PATH%" (echo Directory not in path: %1 >&2 & exit /b 1)
 endlocal & path %_%
 goto :eof
