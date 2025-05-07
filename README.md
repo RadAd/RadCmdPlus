@@ -15,12 +15,12 @@ set RADCMDPLUSDIR=%LOCALAPPDATA%\Programs\RadSoft\RadCmdPlus
 call "%RADCMDPLUSDIR%\CmdStartup.bat"
 ```
 
-## RadAlias
+## [RadAlias](bin/RadAlias.bat)
 Manage aliases for the command line.
 
 **alias:** alias
 
-## RadChDir
+## [RadChDir](bin/RadChDir.bat)
 Enhancement over standard `chdir`:
 - Will always change drive when necessary
 - `-` will change to last directory
@@ -29,41 +29,41 @@ Enhancement over standard `chdir`:
 
 **alias:** cd, chdir
 
-## RadDirBookmark
+## [RadDirBookmark](bin/RadDirBookmark.bat)
 Directory bookmarks.
 
 Save directory bookmarks to quickly change to later.
 
 **alias:** bm
 
-## RadDirHistory
+## [RadDirHistory](bin/RadDirHistory.bat)
 Directory history.
 
 Save directory changes in history to quickly change to later.
 
 **alias:** scd
 
-## RadPostCd
+## [RadPostCd](bin/RadPostCd.bat)
 All batch files in `%LOCALAPPDATA%\RadCmdPlus\PostCd` will be executed after current directory is changed.
 
-## RadPath
+## [RadPath](bin/RadPath.bat)
 Manage the path.
 
 Add, remove or list the directories in the path.
 
 **alias:** path
 
-## RadPrintPath
+## [RadPrintPath](bin/RadPrintPath.bat)
 Print out path line by line.
 
 Highlights duplicate entries and non-existant directories.
 
-## RadPrompt
+## [RadPrompt](bin/RadPrompt.bat)
 Enhancement for the prompt.
 
 A simple way to create a nice looking prompt.
 
-## RadShim
+## [RadShim](bin/RadShim.bat)
 Shim management.
 
 Use shims instead of extending the path.
