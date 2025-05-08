@@ -2,13 +2,12 @@
 
 if "%~1" == "/?" goto :_usage
 
-where sed.exe > NUL 2>&1 || (echo Unable to find sed.exe >&2 & exit /b)
+where sed.exe > NUL 2>&1 || (echo Unable to find sed.exe>&2 & exit /b)
 
 setlocal ENABLEDELAYEDEXPANSION
 if not defined ESC set ESC=
-set NOT_EXIST=%ESC%[31m
-set DUPLICATE=%ESC%[32m
-set RESET=%ESC%[0m
+set NOT_EXIST={error}
+set DUPLICATE={warning}
 for /F "delims=" %%i in ('echo."%PATH:)=^)%" ^| sed.exe "s/;/""\n""/g"') do @if not %%i == "" call :process %%i
 endlocal
 goto :eof
@@ -24,11 +23,11 @@ set _=%_:)=_%
 set DIR=%~1
 
 if defined %_% (
-    echo.%DUPLICATE%%DIR% [Duplicate]%RESET%
+    call RadColorEcho %DUPLICATE%%DIR% [Duplicate]{reset}
 ) else if exist "%DIR:^=%" (
     echo.%DIR%
 ) else (
-    echo.%NOT_EXIST%%DIR% [Not Exist]%RESET%
+    call RadColorEcho %NOT_EXIST%%DIR% [Not Exist]{reset}
 )
 set %_%=1
 goto :eof

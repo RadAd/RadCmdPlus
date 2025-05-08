@@ -1,12 +1,10 @@
-rem path %LOCALAPPDATA%\RadCmdPlus\Shims;%PROGRAMDATA%\RadCmdPlus\Shims;%~dp0bin;%PATH%
-rem %RADPATH% add "%PROGRAMDATA%\RadCmdPlus\Shims"
-
 for %%i in (
     "%~dp0bin"
+    "%PROGRAMDATA%\RadCmdPlus\Shims"
     "%LOCALAPPDATA%\RadCmdPlus\Shims"
-) do call "%~dp0bin\RadPath.bat" add %%i 2> NUL
+) do if exist %%i call "%~dp0bin\RadPath.bat" /q add %%i
 
-set RADCMDPLUS_CHDIR=RadChDir
+if not defined RADCMDPLUS_CHDIR set RADCMDPLUS_CHDIR=RadChDir
 doskey /MACROFILE="%~dp0macros.dat"
 if exist "%LOCALAPPDATA%\RadCmdPlus\macros.dat" doskey /MACROFILE="%LOCALAPPDATA%\RadCmdPlus\macros.dat"
 for %%f in ("%LOCALAPPDATA%\RadCmdPlus\Startup\*.bat") do (
