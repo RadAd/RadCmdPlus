@@ -66,13 +66,15 @@ endlocal & for /f %%f in ('type "%file%" ^| fzf --height=~10 --exact --query="%*
 goto :eof
 
 :usage
-echo.%0 - Directory bookmarks
-echo.
-echo.%0 add ^<dir^>     To add directory
-echo.%0 delete ^<dir^>  To delete directory
-echo.%0 go ^<num^>      To change directory
-echo.%0 list          To list bookmarks
-echo.%0 search        To search bookmarks using fzf and change directory
-echo.%0 ^<num^>         To change directory (if no fzf)
-echo.%0 ^<search^>      To search bookmarks using fzf with initial search term and change directory
+for %%i in (
+    "{white}%~n0{reset} - Directory bookmarks"
+    ""
+    "{white}%~n0{reset} {yellow}add{reset} {lt}{yellow}dir{reset}{gt}     To add directory"
+    "{white}%~n0{reset} {yellow}delete{reset} {lt}{yellow}dir{reset}{gt}  To delete directory"
+    "{white}%~n0{reset} {yellow}go{reset} {lt}{yellow}num{reset}{gt}      To change directory"
+    "{white}%~n0{reset} {yellow}list{reset}          To list bookmarks"
+    "{white}%~n0{reset} {yellow}search{reset}        To search bookmarks using fzf and change directory"
+    "{white}%~n0{reset} {lt}{yellow}num{reset}{gt}         To change directory (if no fzf)"
+    "{white}%~n0{reset} {lt}{yellow}search{reset}{gt}      To search bookmarks using fzf with initial search term and change directory"
+) do call RadColorEcho %%~i
 goto :eof

@@ -12,7 +12,9 @@ for %%f in ("%LOCALAPPDATA%\RadCmdPlus\PostCd\*.bat") do @(
 goto :eof
 
 :usage
-echo.%~n0 - Processing after change of directory
-echo.
-echo.  All batch files in "%LOCALAPPDATA%\RadCmdPlus\PostCd" will be executed after current directory is changed.
+for %%i in (
+    "{white}%~n0{reset} - Processing after change of directory"
+    ""
+    "All batch files in {white}%LOCALAPPDATA%\RadCmdPlus\PostCd{reset} will be executed after current directory is changed."
+) do call RadColorEcho %%~i
 goto :eof

@@ -34,7 +34,9 @@ set %_%=1
 goto :eof
 
 :_usage
-echo.%0 - print out path line by line
-echo.
-echo.Highlights duplicate entries and non-existant directories.
+for %%i in (
+    "{white}%~n0{reset} - print out path line by line"
+    ""
+    "Highlights duplicate entries and non-existant directories."
+) do call RadColorEcho %%~i
 goto :eof

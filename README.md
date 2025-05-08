@@ -29,6 +29,9 @@ Enhancement over standard `chdir`:
 
 **alias:** cd, chdir
 
+## [RadColorEcho](bin/RadColorEcho.bat)
+Like echo with color
+
 ## [RadDirBookmark](bin/RadDirBookmark.bat)
 Directory bookmarks.
 

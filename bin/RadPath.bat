@@ -15,11 +15,13 @@ echo Unknown command: %1 >&2
 goto :eof
 
 :usage
-echo.%0 - Path management
-echo.
-echo.%0 add ^<target^>      Add a directory to the path
-echo.%0 remove ^<target^>   Remove a directory from the path
-echo.%0 list              List directories in the path
+for %%i in (
+    "{white}%~n0{reset} - Path management"
+    ""
+    "{white}%~n0{reset} {yellow}add{reset} {lt}{yellow}target{reset}{gt}      Add a directory to the path"
+    "{white}%~n0{reset} {yellow}remove{reset} {lt}{yellow}target{reset}{gt}   Remove a directory from the path"
+    "{white}%~n0{reset} {yellow}list{reset}              List directories in the path"
+) do call RadColorEcho %%~i
 goto :eof
 
 :add

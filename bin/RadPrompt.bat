@@ -106,17 +106,19 @@ if defined GIT_BRANCH (call :_add %BRANCH_ICON%%GIT_BRANCH%) else (set /a C=C+1)
 goto :eof
 
 :_usage
-echo.%0 - set your prompt
-echo.
-echo.  datetime     - date and time
-echo.  path         - current path
-echo.  homepath     - shortened current path
-echo.  remote       - remote unc
-echo.  branch       - current git branch
-echo.
-echo.homepath is not calculated dynamically. If the current directory changes then you need to run %0 again.
-echo.
-echo.Git branch is defined in the GIT_BRANCH environment variable. If this changes then you need to run %0 again.
-echo.
-echo.eg. %0 datetime remote homepath branch
+for %%i in (
+    "{white}%~n0{reset} - set your prompt"
+    ""
+    "  {yellow}datetime{reset}     - date and time"
+    "  {yellow}path{reset}         - current path"
+    "  {yellow}homepath{reset}     - shortened current path"
+    "  {yellow}remote{reset}       - remote unc"
+    "  {yellow}branch{reset}       - current git branch"
+    ""
+    "{yellow}homepath{reset} is not calculated dynamically. If the current directory changes then you need to run {white}%~n0{reset} again."
+    ""
+    "Git {yellow}branch{reset} is defined in the GIT_BRANCH environment variable. If this changes then you need to run {white}%~n0{reset} again."
+    ""
+    "eg. {white}%~n0{reset} {yellow}datetime remote homepath branch{reset}"
+) do call RadColorEcho %%~i
 goto :eof

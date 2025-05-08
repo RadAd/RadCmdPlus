@@ -7,11 +7,13 @@ goto :set
 goto :eof
 
 :usage
-echo %~n0 - create an alias or print out list of aliases
-echo.
-echo %~n0 [name]=[text]       - create an alias
-echo %~n0 [name]              - display an alias
-echo %~n0                     - list all aliases
+for %%i in (
+    "{white}%~n0{reset} - Create an alias or print out list of aliases"
+    ""
+    "{white}%~n0{reset} [{yellow}name{reset}]=[{yellow}text{reset}]       - create an alias"
+    "{white}%~n0{reset} [{yellow}name{reset}]              - display an alias"
+    "{white}%~n0{reset}                     - list all aliases"
+) do call RadColorEcho %%~i
 goto :eof
 
 :list

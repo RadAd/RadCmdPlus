@@ -59,11 +59,13 @@ findstr /I /C:"%1" "%file%"
 goto :eof
 
 :usage
-echo.%0 - Directory history
-echo.
-echo.%0 add           To add current directory
-echo.%0 list          To list last 10 directories
-echo.%0 search        To search bookmarks using fzf and change directory
-echo.%0 ^<search^>      To search history (if no fzf)
-echo.%0 ^<search^>      To search history using fzf with initial search term and change directory
+for %%i in (
+    "{white}%~n0{reset} - Directory history"
+    ""
+    "{white}%~n0{reset} {yellow}add{reset}           To add current directory"
+    "{white}%~n0{reset} {yellow}list{reset}          To list last 10 directories"
+    "{white}%~n0{reset} {yellow}search{reset}        To search bookmarks using fzf and change directory"
+    "{white}%~n0{reset} {lt}{yellow}search{reset}{gt}      To search history (if no fzf)"
+    "{white}%~n0{reset} {lt}{yellow}search{reset}{gt}      To search history using fzf with initial search term and change directory"
+) do call RadColorEcho %%~i
 goto :eof

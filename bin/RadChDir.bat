@@ -15,12 +15,16 @@ endlocal && set RADCD_LAST=%CD% && call %CHDIR% %_% && call RadPostCd.bat
 goto :eof
 
 :usage
-echo.%~n0 ^<cd^> - Change current directory
-echo.
-echo.  Will always change drive when necessary
-echo.  "-" will change to last directory
-echo.  Network drives will use pushd instead
-echo.  "~" will expand to the home directory
-echo.
-echo.  All batch files in "%LOCALAPPDATA%\RadCmdPlus\PostCd" will be executed after current directory is changed.
+for %%i in (
+    "{white}%~n0{reset} - Change current directory"
+    ""
+    "{white}%~n0{reset} {lt}{yellow}dir{reset}{gt}       - change directory to dir"
+    ""
+    "Will always change drive when necessary"
+    "{quote}{white}-{reset}{quote} will change to last directory"
+    "Network drives will use pushd instead"
+    "{quote}{white}~{reset}{quote} will expand to the home directory"
+    ""
+    "All batch files in {white}%LOCALAPPDATA%\RadCmdPlus\PostCd{reset} will be executed after current directory is changed."
+) do call RadColorEcho %%~i
 goto :eof

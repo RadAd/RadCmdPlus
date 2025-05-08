@@ -14,9 +14,9 @@ goto :eof
 if "%~1" == "" (echo Missing target >&2 & exit /b 1)
 if not "%~2" == "" (echo Too many parameters >&2 & exit /b 1)
 
-if not exist %1 (echo Cannot find target: %ANSI_RED%%1%ANSI_RESET% >&2 & exit /b 1)
+if not exist %1 (call RadColorEcho Cannot find target: {error}%1{reset} >&2 & exit /b 1)
 if not exist %RAD_SHIM_DIR% md %RAD_SHIM_DIR%
-echo.Shim: %ANSI_BLUE%%1%ANSI_RESET%
+call RadColorEcho Shim: {info}%1{reset}
 echo.@rem Prog=%1> "%RAD_SHIM_DIR%\%~n1.bat"
 echo.@%1 %%*>> "%RAD_SHIM_DIR%\%~n1.bat"
 if /I not "%~x1" == ".bat" (
@@ -28,15 +28,17 @@ goto :eof
 :check
 set _=
 for /f "tokens=1,* delims==" %%i in (%RAD_SHIM_DIR%\%~1.bat) do @(if "%%i"=="@rem Prog" set _=%%j)
-if not defined _ (echo Cannot determine shim program: %ANSI_YELLOW%%1%ANSI_RESET% >&2 & exit /b 1)
-if not exist %_% (echo Shim doesn't exist: %ANSI_RED%%_%%ANSI_RESET% & exit /b 1)
-echo Shim exists: %ANSI_GREEN%%_%%ANSI_RESET%
+if not defined _ (call RadColorEcho Cannot determine shim program: {warning}%1{reset} >&2 & exit /b 1)
+if not exist %_% (call RadColorEcho Shim doesn't exist: {error}%_%{reset} & exit /b 1)
+call RadColorEcho Shim exists: {green}%_%{reset}
 goto :eof
 
 :usage
-echo.%0 - Shim management
-echo.
-echo.%0 create ^<target^>    Create a shim for the target executable
-echo.
-echo.Shims are created in directory: %RAD_SHIM_DIR%
+for %%i in (
+    "{white}%~n0{reset} - Shim management"
+    ""
+    "{white}%~n0{reset} {yellow}create{reset} {lt}{yellow}target{reset}{gt}    Create a shim for the target executable"
+    ""
+    "Shims are created in directory: {white}%RAD_SHIM_DIR%{reset}"
+) do call RadColorEcho %%~i
 goto :eof
