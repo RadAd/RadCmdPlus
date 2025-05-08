@@ -21,9 +21,9 @@ for %%i in (
     "{white}%~n0{reset} {lt}{yellow}dir{reset}{gt}       - change directory to dir"
     ""
     "Will always change drive when necessary"
-    "{quote}{white}-{reset}{quote} will change to last directory"
+    ""{white}-{reset}" will change to last directory"
     "Network drives will use pushd instead"
-    "{quote}{white}~{reset}{quote} will expand to the home directory"
+    ""{white}~{reset}" will expand to the home directory"
     ""
     "All batch files in {white}%LOCALAPPDATA%\RadCmdPlus\PostCd{reset} will be executed after current directory is changed."
 ) do call RadColorEcho %%~i

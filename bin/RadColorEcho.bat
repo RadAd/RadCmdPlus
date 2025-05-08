@@ -8,6 +8,8 @@ if not defined BEL set BEL=
 set "_=%*"
 if not defined _ echo. & exit /b 0
 
+set "_=%_:"={quote}%"
+
 set "_=%_:<=^<%"
 set "_=%_:>=^>%"
 set "_=%_:|=^|%"
