@@ -23,6 +23,7 @@ set BRANCH_ICON=$S
 
 rem ==============
 
+if not defined HOME set HOME=%USERPROFILE%
 if not defined RAD_PROMPT_COLORS set RAD_PROMPT_COLORS=31 32 33 34 35 36 37
 
 set _=

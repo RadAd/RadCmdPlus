@@ -7,6 +7,7 @@ rem TODO May fail if its the last path
 
 if not defined command (call RadPrintPath.bat & goto :eof)
 if "%command%" == "add" shift & goto :add
+if "%command%" == "addend" shift & goto :addend
 if "%command%" == "remove" shift & goto :remove
 if "%command%" == "list" shift & goto :list
 if "%command%" == "/?" goto :usage
@@ -31,6 +32,18 @@ set _=!_:;%~1=!
 if not "%_%" == "%PATH%" (echo Path already added: %1 >&2 & exit /b 1)
 endlocal
 path %~1;%PATH%
+goto :eof
+
+:addend
+rem echo Adding %1
+rem echo on
+if not exist %1 (echo Directory doesn't exist: %1 >&2 & exit /b 1)
+set _=%PATH%
+set _=!_:%~1;=!
+set _=!_:;%~1=!
+if not "%_%" == "%PATH%" (echo Path already added: %1 >&2 & exit /b 1)
+endlocal
+path %PATH%;%~1
 goto :eof
 
 :remove
