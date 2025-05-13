@@ -15,6 +15,12 @@ set RADCMDPLUSDIR=%LOCALAPPDATA%\Programs\RadSoft\RadCmdPlus
 call "%RADCMDPLUSDIR%\CmdStartup.bat"
 ```
 
+## [CmdStartup](CmdStartup.bat)
+Initializes the cmd environment.
+
+For user customisation it executes all batch files in `%LOCALAPPDATA%\RadCmdPlus\Startup`,
+and loads the aliases from `%LOCALAPPDATA%\RadCmdPlus\macros.dat`.
+
 ## [RadAlias](bin/RadAlias.bat)
 Manage aliases for the command line.
 
@@ -30,7 +36,7 @@ Enhancement over standard `chdir`:
 **alias:** cd, chdir
 
 ## [RadColorEcho](bin/RadColorEcho.bat)
-Like echo with color
+Like echo with color.
 
 ## [RadDirBookmark](bin/RadDirBookmark.bat)
 Directory bookmarks.
