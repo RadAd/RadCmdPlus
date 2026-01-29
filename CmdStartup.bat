@@ -1,3 +1,17 @@
+@echo off
+
+Rem does cmd line contain "/C" and therefore will not enter interactive mode
+setlocal
+set _="%CMDCMDLINE%"
+set _=%_:>=_%
+set _=%_:<=_%
+set _=%_:|=_%
+set _=%_:&=_%
+set _=%_:"=_%
+rem ((echo. "%_%" | findstr /I /C:" /C ") > NUL 2> NUL) && echo done && goto :eof
+if not "%_:* /C =%" == "%_%" (goto :eof)
+endlocal
+
 for %%i in (
     "%~dp0bin"
     "%PROGRAMDATA%\RadCmdPlus\Shims"
@@ -5,8 +19,10 @@ for %%i in (
 ) do if exist %%i call "%~dp0bin\RadPath.bat" /q add %%i
 
 if not defined RADCMDPLUS_CHDIR set RADCMDPLUS_CHDIR=RadChDir
+
 doskey /MACROFILE="%~dp0macros.dat"
 if exist "%LOCALAPPDATA%\RadCmdPlus\macros.dat" doskey /MACROFILE="%LOCALAPPDATA%\RadCmdPlus\macros.dat"
+
 for %%f in ("%LOCALAPPDATA%\RadCmdPlus\Startup\*.bat") do (
     rem echo --- "%%f"
     call "%%f" || echo Error in "%%f"
