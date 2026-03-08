@@ -121,8 +121,6 @@ for %%i in (
     ""
     "{yellow}homepath{reset} is not calculated dynamically. If the current directory changes then you need to run {white}%~n0{reset} again."
     ""
-    "Git {yellow}branch{reset} is defined in the GIT_BRANCH environment variable. If this changes then you need to run {white}%~n0{reset} again."
-    ""
     "eg. {white}%~n0{reset} {yellow}datetime remote homepath branch{reset}"
 ) do call RadColorEcho %%~i
 goto :eof
