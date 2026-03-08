@@ -102,6 +102,10 @@ if defined SSHWINUSERDOMAIN (call :_add %REMOTE_ICON%%SSHWINUSERDOMAIN%$S) else 
 goto :eof
 
 :branch
+set GIT_BRANCH=
+for /f "usebackq tokens=*" %%f in (`call git branch --show-current 2^> NUL`) do @(
+  set GIT_BRANCH=%%f
+)
 if defined GIT_BRANCH (call :_add %BRANCH_ICON%%GIT_BRANCH%) else (set /a C=C+1)
 goto :eof
 
