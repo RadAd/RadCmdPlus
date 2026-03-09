@@ -21,9 +21,15 @@ for %%i in (
 if not defined RADCMDPLUS_CHDIR set RADCMDPLUS_CHDIR=RadChDir
 
 doskey /MACROFILE="%~dp0macros.dat"
-if exist "%LOCALAPPDATA%\RadCmdPlus\macros.dat" doskey /MACROFILE="%LOCALAPPDATA%\RadCmdPlus\macros.dat"
+if exist "%LOCALAPPDATA%\RadCmdPlus\macros\macros.dat" doskey /MACROFILE="%LOCALAPPDATA%\RadCmdPlus\macros\macros.dat"
+if exist "%LOCALAPPDATA%\RadCmdPlus\macros\macros.%COMPUTERNAME%.dat" doskey /MACROFILE="%LOCALAPPDATA%\RadCmdPlus\macros\macros.%COMPUTERNAME%.dat"
 
 for %%f in ("%LOCALAPPDATA%\RadCmdPlus\Startup\*.bat") do (
+    rem echo --- "%%f"
+    call "%%f" || echo Error in "%%f"
+)
+
+for %%f in ("%LOCALAPPDATA%\RadCmdPlus\Startup\%COMPUTERNAME%\*.bat") do (
     rem echo --- "%%f"
     call "%%f" || echo Error in "%%f"
 )
