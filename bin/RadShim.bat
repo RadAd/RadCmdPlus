@@ -28,7 +28,8 @@ goto :eof
 
 :check
 set _=
-for /f "tokens=1,* delims==" %%i in (%RAD_SHIM_DIR%\%~1.bat) do @(if "%%i"=="@rem Prog" set _=%%j)
+if exist "%RAD_SHIM_DIR%\%~1.bat" for /f "tokens=1,* delims==" %%i in (%RAD_SHIM_DIR%\%~1.bat) do @(if "%%i"=="@rem Prog" set _=%%j)
+if exist "%RAD_SHIM_DIR%\%~1.cmd" for /f "tokens=1,* delims==" %%i in (%RAD_SHIM_DIR%\%~1.cmd) do @(if "%%i"=="@rem Prog" set _=%%j)
 if not defined _ (call RadColorEcho Cannot determine shim program: {warning}%1{reset}>&2 & exit /b 1)
 if not exist %_% (call RadColorEcho Shim doesn't exist: {error}%_%{reset} & exit /b 1)
 call RadColorEcho Shim exists: {green}%_%{reset}
