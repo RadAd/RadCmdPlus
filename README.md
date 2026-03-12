@@ -85,10 +85,10 @@ Standard modules you can chose to use. To use them they need to be installed.
 ### [Macros](Startup/Macros.bat)
 Load macros files using [doskey](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/doskey).
 
-To install `echo call "^%RADCMDPLUSDIR^%\Startup\Macros.bat" > "%RADCMDPLUSUSERDIR%\Startup\Macros.bat"`
+To install `echo call ^"^%RADCMDPLUSDIR^%\Startup\Macros.bat^"> "%RADCMDPLUSUSERDIR%\Startup\Macros.bat"`
 
 ### [Shims](Startup/Shims.bat)
 Initialisation for RadShim.bat.
 
-To install `echo call "^%RADCMDPLUSDIR^%\Startup\Shims.bat" > "%RADCMDPLUSUSERDIR%\Startup\Shims.bat"`
+To install `echo call ^"^%RADCMDPLUSDIR^%\Startup\Shims.bat^"> "%RADCMDPLUSUSERDIR%\Startup\Shims.bat"`
 
