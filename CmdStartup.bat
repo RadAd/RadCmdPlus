@@ -16,11 +16,7 @@ set RADCMDPLUSDIR=%~dp0
 set RADCMDPLUSUSERDIR=%LOCALAPPDATA%\RadCmdPlus
 set RADCMDPLUSALLDIR=%PROGRAMDATA%\RadCmdPlus
 
-for %%i in (
-    "%RADCMDPLUSDIR%bin"
-    "%RADCMDPLUSALLDIR%\Shims"
-    "%RADCMDPLUSUSERDIR%\Shims"
-) do if exist %%i call "%RADCMDPLUSDIR%bin\RadPath.bat" /q add %%i
+call "%RADCMDPLUSDIR%bin\RadPath.bat" /q add "%RADCMDPLUSDIR%bin"
 
 if not defined RADCMDPLUS_CHDIR set RADCMDPLUS_CHDIR=RadChDir
 

@@ -1,6 +1,6 @@
 @echo off
 setlocal
-if not defined RAD_SHIM_DIR set RAD_SHIM_DIR=%LOCALAPPDATA%\RadCmdPlus\Shims
+if not defined RAD_SHIM_DIR set RAD_SHIM_DIR=%RADCMDPLUSUSERDIR%\Shims
 set command=%~1
 
 if not defined command (goto :usage)
