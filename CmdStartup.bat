@@ -12,6 +12,9 @@ rem ((echo. "%_%" | findstr /I /C:" /C ") > NUL 2> NUL) && echo done && goto :eo
 if not "%_:* /C =%" == "%_%" (goto :eof)
 endlocal
 
+Rem shortcircuit if inheriting from a process where it is already setup
+if defined RADCMDPLUSDIR goto :end
+
 set RADCMDPLUSDIR=%~dp0
 set RADCMDPLUSUSERDIR=%LOCALAPPDATA%\RadCmdPlus
 set RADCMDPLUSALLDIR=%PROGRAMDATA%\RadCmdPlus
@@ -26,10 +29,6 @@ for %%f in ("%RADCMDPLUSUSERDIR%\Startup\*.bat") do (
     call "%%f" || echo Error in "%%f" & ver > nul
 )
 
-for %%f in ("%RADCMDPLUSUSERDIR%\Startup\%COMPUTERNAME%\*.bat") do (
-    rem echo --- "%%f"
-    call "%%f" || echo Error in "%%f" & ver > nul
-)
-
-Rem running in the built-in terminal has problems with this
-call RadPostCd.bat
+:end
+Rem TODO Need a better way for always run batch files
+if not defined RADLINE_DIR call "%RADCMDPLUSUSERDIR%\Startup\RadLine.bat"

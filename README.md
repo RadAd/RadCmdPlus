@@ -82,6 +82,11 @@ Use shims instead of extending the path.
 ## Startup Modules
 Standard modules you can chose to use. To use them they need to be installed.
 
+### [Macros](Startup/Computer.bat)
+Execute computer specific starup batch files.
+
+To install `echo call ^"^%RADCMDPLUSDIR^%\Startup\Computer.bat^"> "%RADCMDPLUSUSERDIR%\Startup\Computer.bat"`
+
 ### [Macros](Startup/Macros.bat)
 Load macros files using [doskey](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/doskey).
 
