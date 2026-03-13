@@ -32,3 +32,4 @@ for %%f in ("%RADCMDPLUSUSERDIR%\Startup\*.bat") do (
 :end
 Rem TODO Need a better way for always run batch files
 if not defined RADLINE_DIR call "%RADCMDPLUSUSERDIR%\Startup\RadLine.bat"
+call RadPostCd.bat
