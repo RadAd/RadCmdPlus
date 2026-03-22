@@ -1,5 +1,6 @@
 @echo off
 setlocal
+if not defined RADCMDPLUSUSERDIR set RADCMDPLUSUSERDIR=%LOCALAPPDATA%\RadCmdPlus
 if not defined RAD_SHIM_DIR set RAD_SHIM_DIR=%RADCMDPLUSUSERDIR%\Shims
 set command=%~1
 
@@ -18,13 +19,19 @@ if not exist %1 (call RadColorEcho Cannot find target: {error}%1{reset}>&2 & exi
 if not exist %RAD_SHIM_DIR% md %RAD_SHIM_DIR%
 call RadColorEcho Shim: {info}%1{reset}
 if /I not "%~x1" == ".bat" if /I not "%~x1" == ".cmd" (
-  echo.@rem Prog=%1> "%RAD_SHIM_DIR%\%~nx1.bat"
-  echo.@%1 %%*>> "%RAD_SHIM_DIR%\%~nx1.bat"
+  call :write_shim %1 "%RAD_SHIM_DIR%\%~nx1.bat"
+  call :write_shim %1 "%RAD_SHIM_DIR%\%~n1.bat"
 ) else (
-  echo.@rem Prog=%1> "%RAD_SHIM_DIR%\%~nx1"
-  echo.@%1 %%*>> "%RAD_SHIM_DIR%\%~nx1"
+  call :write_shim %1 "%RAD_SHIM_DIR%\%~nx1"
 )
 goto :eof
+
+:write_shim
+rem echo Write: %2
+echo.@rem Prog=%1> %2
+echo.@%1 %%*>> %2
+goto :eof
+
 
 :check
 set _=
