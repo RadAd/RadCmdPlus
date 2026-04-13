@@ -9,16 +9,13 @@ if not defined ESC set ESC=
 set NOT_EXIST={error}
 set DUPLICATE={warning}
 for /F "delims=" %%i in ('echo."%PATH:)=^)%" ^| sed.exe "s/;/""\n""/g"') do @if not %%i == "" call :process %%i
+rem for %%i in (%PATH:)=^)%) do @if not %%i == "" call :process %%i
 endlocal
 goto :eof
 
 :process
 set _=%~1
-set _=%_: =_%
-set _=%_::=_%
-set _=%_:\=_%
-set _=%_:(=_%
-set _=%_:)=_%
+for %%I in (" " : \ ( ")" ) do @set _=!_:%%~I=_!
 
 set DIR=%~1
 

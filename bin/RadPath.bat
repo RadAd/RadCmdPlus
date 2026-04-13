@@ -10,7 +10,7 @@ if not defined command (call RadPrintPath.bat & goto :eof)
 if "%command%" == "add" shift & goto :add
 if "%command%" == "addend" shift & goto :addend
 if "%command%" == "remove" shift & goto :remove
-if "%command%" == "list" shift & goto :list
+if "%command%" == "list" shift & (call RadPrintPath.bat & goto :eof)
 if "%command%" == "/?" goto :usage
 echo Unknown command: %1>&2
 goto :eof
