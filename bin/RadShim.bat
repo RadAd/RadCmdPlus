@@ -18,11 +18,13 @@ if not "%~2" == "" (echo Too many parameters>&2 & exit /b 1)
 if not exist %1 (call RadColorEcho Cannot find target: {error}%1{reset}>&2 & exit /b 1)
 if not exist %RAD_SHIM_DIR% md %RAD_SHIM_DIR%
 call RadColorEcho Shim: {info}%1{reset}
-if /I not "%~x1" == ".bat" if /I not "%~x1" == ".cmd" (
+if /I "%~x1" == ".bat" (
+  call :write_shim %1 "%RAD_SHIM_DIR%\%~nx1"
+) else if /I not "%~x1" == ".cmd" (
+  call :write_shim %1 "%RAD_SHIM_DIR%\%~nx1"
+) else (
   call :write_shim %1 "%RAD_SHIM_DIR%\%~nx1.bat"
   call :write_shim %1 "%RAD_SHIM_DIR%\%~n1.bat"
-) else (
-  call :write_shim %1 "%RAD_SHIM_DIR%\%~nx1"
 )
 goto :eof
 
