@@ -20,7 +20,7 @@ if not exist %RAD_SHIM_DIR% md %RAD_SHIM_DIR%
 call RadColorEcho Shim: {info}%1{reset}
 if /I "%~x1" == ".bat" (
   call :write_shim %1 "%RAD_SHIM_DIR%\%~nx1"
-) else if /I not "%~x1" == ".cmd" (
+) else if /I "%~x1" == ".cmd" (
   call :write_shim %1 "%RAD_SHIM_DIR%\%~nx1"
 ) else (
   call :write_shim %1 "%RAD_SHIM_DIR%\%~nx1.bat"
