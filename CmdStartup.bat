@@ -26,6 +26,7 @@ if not defined RADCMDPLUS_CHDIR set RADCMDPLUS_CHDIR=RadChDir
 Rem ver > nul to clear error
 for %%f in ("%RADCMDPLUSUSERDIR%\Startup\*.bat") do (
     rem echo --- "%%f"
+    echo|set /p=.&ver>NUL
     call "%%f" || echo Error in "%%f" & ver > nul
 )
 
