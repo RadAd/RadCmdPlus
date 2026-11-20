@@ -1,9 +1,9 @@
 @echo off
 setlocal ENABLEDELAYEDEXPANSION
 prompt $G$S
-if "%~1" == "/q" shift & set RADPATH_QUIET=true
-set command=%~1& shift
-if "%~1" == "/q" shift & set RADPATH_QUIET=true
+if "%~1" == "/q" shift /1 & set RADPATH_QUIET=true
+set command=%~1& shift /1
+if "%~1" == "/q" shift /1 & set RADPATH_QUIET=true
 
 rem TODO 'Remove' may fail if its the last path
 
